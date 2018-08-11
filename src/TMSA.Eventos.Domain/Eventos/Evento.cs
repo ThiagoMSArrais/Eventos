@@ -9,6 +9,8 @@ namespace TMSA.Eventos.Domain.Eventos
     {
         public Evento(
             string nome,
+            string descricaoCurta,
+            string descricaoLonga,
             DateTime dataInicioDoEvento,
             DateTime dataFimDoEvento,
             bool onLine,
@@ -17,6 +19,8 @@ namespace TMSA.Eventos.Domain.Eventos
             string nomeDaEmpresa)
         {
             Nome = nome;
+            DescricaoCurta = descricaoCurta;
+            DescricaoLonga = descricaoLonga;
             DataInicioDoEvento = dataInicioDoEvento;
             DataFimDoEvento = dataFimDoEvento;
             Online = onLine;
@@ -29,6 +33,8 @@ namespace TMSA.Eventos.Domain.Eventos
         protected Evento() { }
 
         public string Nome { get; private set; }
+        public string DescricaoCurta { get; private set; }
+        public string DescricaoLonga { get; private set; }
         public DateTime DataInicioDoEvento { get; private set; }
         public DateTime DataFimDoEvento { get; private set; }
         public bool Online { get; private set; }
@@ -52,6 +58,8 @@ namespace TMSA.Eventos.Domain.Eventos
         private void Validar()
         {
             ValidarNome();
+            ValidarDescricaoCurta();
+            ValidarDescricaoLonga();
             ValidarData();
             ValidarLocal();
             ValidarValor();
@@ -104,6 +112,20 @@ namespace TMSA.Eventos.Domain.Eventos
             RuleFor(c => c.NomeDaEmpresa)
                 .NotEmpty().WithMessage("Preencha o nome da empresa.")
                 .Length(2, 150).WithMessage("O nome da empresa pode ser preenchido entre 2 à 150 caracteres.");
+        }
+
+        private void ValidarDescricaoCurta()
+        {
+            RuleFor(c => c.DescricaoCurta)
+                .NotEmpty().WithMessage("Preencha a descrição curta.")
+                .Length(10, 150).WithMessage("A descrição curta deve ter entre 10 à 150 caracteres."); 
+        }
+
+        private void ValidarDescricaoLonga()
+        {
+            RuleFor(c => c.DescricaoLonga)
+                .NotEmpty().WithMessage("Preencha a descrição longa.")
+                .Length(10, 240).WithMessage("A descrição longa deve ter entre 10 à 240 caracteres.");
         }
         #endregion
     }
