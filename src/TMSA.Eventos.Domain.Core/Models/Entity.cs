@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using FluentValidation;
 using FluentValidation.Results;
 
@@ -13,6 +14,7 @@ namespace TMSA.Eventos.Domain.Core.Models
         }
 
         public Guid Id { get; protected set; }
+        [NotMapped]
         public ValidationResult ValidationResult { get; protected set; }
         public abstract bool EhValido();
         

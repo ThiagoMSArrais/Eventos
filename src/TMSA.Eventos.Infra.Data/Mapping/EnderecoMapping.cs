@@ -48,7 +48,8 @@ namespace TMSA.Eventos.Infra.Data.Mapping
 
             builder.HasOne(e => e.Evento)
                  .WithOne(ev => ev.Endereco)
-                 .HasForeignKey<Endereco>(e => e.EventoId);
+                 .HasForeignKey<Endereco>(e => e.EventoId)
+                 .IsRequired(false);
 
             builder.ToTable("Enderecos");
         }
