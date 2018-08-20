@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using TMSA.Eventos.Application.Interfaces;
 using TMSA.Eventos.Application.ViewModels;
 using TMSA.Eventos.Domain.Interfaces;
 using TMSA.Eventos.Domain.Interfaces.service;
+using TMSA.Eventos.Domain.Eventos;
 
 namespace TMSA.Eventos.Application
 {
@@ -11,15 +13,19 @@ namespace TMSA.Eventos.Application
     {
 
         private readonly IEventoService _eventoService;
+        private readonly IMapper _mapper;
 
         public EventoAppService(IEventoService eventoService, IUnitOfWork uow) : base(uow)
         {
             _eventoService = eventoService;
         }
 
-        public EventoEnderecoOrganizador Adicionar(EventoEnderecoOrganizador eventoEnderecoOrganizador)
+        public EventoEnderecoViewModel Adicionar(EventoEnderecoViewModel eventoEnderecoViewModel)
         {
-            throw new NotImplementedException();
+            var evento = _mapper.Map<EventoEnderecoViewModel, Evento>(eventoEnderecoViewModel);
+            var endereco = _mapper.Map<EventoEnderecoViewModel, Endereco>(eventoEnderecoViewModel);
+
+            return eventoEnderecoViewModel;
         }
 
         public void Atualizar(EventoViewModel obj)

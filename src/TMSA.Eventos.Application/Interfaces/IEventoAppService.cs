@@ -6,7 +6,7 @@ namespace TMSA.Eventos.Application.Interfaces
 {
     public interface IEventoAppService : IDisposable
     {
-        EventoEnderecoOrganizador Adicionar(EventoEnderecoOrganizador eventoEnderecoOrganizador);
+        EventoEnderecoViewModel Adicionar(EventoEnderecoViewModel eventoEndereco);
         void Atualizar(EventoViewModel obj);
         void Remover(Guid id);
         EventoViewModel ObterPorId(Guid id);

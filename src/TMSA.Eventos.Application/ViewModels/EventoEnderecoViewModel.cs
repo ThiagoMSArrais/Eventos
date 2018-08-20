@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TMSA.Eventos.Application.ViewModels
 {
-    public class EventoViewModel
+    public class EventoEnderecoViewModel
     {
-        public EventoViewModel()
+        public EventoEnderecoViewModel()
         {
+            EnderecoId = Guid.NewGuid();
             EventoId = Guid.NewGuid();
-            Endereco = new EnderecoViewModel();
         }
 
         [Key]
@@ -49,6 +49,26 @@ namespace TMSA.Eventos.Application.ViewModels
         public string NomeDaEmpresa { get; set; }
 
         public EnderecoViewModel Endereco { get; set; }
-        public  Guid OrganizadorId { get; set; }
+        public Guid OrganizadorId { get; set; }
+
+        // Endereço
+
+        [Key]
+        public Guid EnderecoId { get; set; }
+
+        public string Logradouro { get; set; }
+
+        public string Numero { get; set; }
+
+        public string Complemento { get; set; }
+
+        public string Bairro { get; set; }
+
+        public string CEP { get; set; }
+
+        public string Cidade { get; set; }
+
+        public string Estado { get; set; }
+
     }
 }

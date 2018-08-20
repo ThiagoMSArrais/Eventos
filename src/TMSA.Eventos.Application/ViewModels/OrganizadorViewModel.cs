@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TMSA.Eventos.Application.ViewModels
 {
-    public class EventoEnderecoOrganizador
+    public class OrganizadorViewModel
     {
     }
 }

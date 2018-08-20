@@ -32,6 +32,7 @@ namespace TMSA.Eventos.Domain.Eventos
         //EF Construtor
         protected Evento() { }
 
+        public Guid EventoId { get; private set; }
         public string Nome { get; private set; }
         public string DescricaoCurta { get; private set; }
         public string DescricaoLonga { get; private set; }
