@@ -6,7 +6,7 @@ namespace TMSA.Eventos.Domain.Interfaces.service
 {
     public interface IEventoService : IDisposable
     {
-        Evento Adicionar(Evento evento);
+        void Adicionar(Evento evento);
         void Atualizar(Evento obj);
         void Remover(Guid id);
         Evento ObterPorId(Guid id);

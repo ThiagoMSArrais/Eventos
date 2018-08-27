@@ -32,7 +32,6 @@ namespace TMSA.Eventos.Domain.Eventos
         //EF Construtor
         protected Evento() { }
 
-        public Guid EventoId { get; private set; }
         public string Nome { get; private set; }
         public string DescricaoCurta { get; private set; }
         public string DescricaoLonga { get; private set; }
@@ -129,5 +128,34 @@ namespace TMSA.Eventos.Domain.Eventos
                 .Length(10, 240).WithMessage("A descrição longa deve ter entre 10 à 240 caracteres.");
         }
         #endregion
+
+        public static class EventoFactory
+        {
+            public static Evento NovoEventoCompleto(Guid id, string nome, string descCurta, string descLonga, DateTime dataInicio, DateTime dataFim, bool gratuito, decimal valor, bool online, string nomeEmpresa, Guid? organizadorId, Endereco endereco)
+            {
+                var evento = new Evento()
+                {
+                    Id = id,
+                    Nome = nome,
+                    DescricaoCurta = descCurta,
+                    DescricaoLonga = descLonga,
+                    DataInicioDoEvento = dataInicio,
+                    DataFimDoEvento = dataFim,
+                    Gratuito = gratuito,
+                    Valor = valor,
+                    Online = online,
+                    NomeDaEmpresa = nomeEmpresa,
+                    Endereco = endereco,
+                };
+
+                if (organizadorId.HasValue)
+                    evento.OrganizadorId = organizadorId.Value;
+
+                if (online)
+                    evento.Endereco = null;
+
+                return evento;
+            }
+        }
     }
 }

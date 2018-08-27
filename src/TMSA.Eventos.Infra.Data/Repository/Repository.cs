@@ -38,7 +38,7 @@ namespace TMSA.Eventos.Infra.Data.Repository
 
         public TEntity ObterPorId(Guid id)
         {
-            return DbSet.AsNoTracking().FirstOrDefault(t => t.Id == id);
+            return DbSet.AsNoTracking().FirstOrDefault(t => t. == id);
         }
 
         public IEnumerable<TEntity> ObterTodos()

@@ -25,32 +25,53 @@ namespace TMSA.Eventos.Application
             var evento = _mapper.Map<EventoEnderecoViewModel, Evento>(eventoEnderecoViewModel);
             var endereco = _mapper.Map<EventoEnderecoViewModel, Endereco>(eventoEnderecoViewModel);
 
+            var eventoCompleto = Evento.EventoFactory.NovoEventoCompleto(evento.EventoId, evento.Nome, evento.DescricaoCurta, evento.DescricaoLonga,
+                                                                         evento.DataInicioDoEvento, evento.DataFimDoEvento, evento.Gratuito, evento.Valor,
+                                                                         evento.Online, evento.NomeDaEmpresa, null, endereco);
+            _eventoService.Adicionar(eventoCompleto);
+
+            if (Commit())
+            {
+                //TODO: MENSAGEM DE SUCESSO NO FRONTEND
+            }
+
             return eventoEnderecoViewModel;
         }
 
-        public void Atualizar(EventoViewModel obj)
+        public void Atualizar(EventoViewModel eventoViewModel)
         {
-            throw new NotImplementedException();
-        }
+            var evento = _mapper.Map<EventoViewModel, Evento>(eventoViewModel);
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            _eventoService.Atualizar(evento);
+
+            if (Commit())
+            {
+                //TODO: MENSAGEM DE SUCESSO NO FRONTEND
+            }
         }
 
         public EventoViewModel ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            var evento = _mapper.Map<Evento, EventoViewModel>(_eventoService.ObterPorId(id));
+
+            return evento;
         }
 
         public IEnumerable<EventoViewModel> ObterTodos()
         {
-            throw new NotImplementedException();
+            var eventos = _mapper.Map<IEnumerable<Evento>, IEnumerable<EventoViewModel>>(_eventoService.ObterTodos());
+
+            return eventos;
         }
 
         public void Remover(Guid id)
         {
-            throw new NotImplementedException();
+            _eventoService.Remover(id);
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }

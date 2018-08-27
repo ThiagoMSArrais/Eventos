@@ -7,11 +7,11 @@ namespace TMSA.Eventos.Application.ViewModels
     {
         public EnderecoViewModel()
         {
-            EnderecoId = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
 
         [Key]
-        public Guid EnderecoId { get; set; }
+        public Guid Id { get; set; }
 
         public string Logradouro { get; set; }
 

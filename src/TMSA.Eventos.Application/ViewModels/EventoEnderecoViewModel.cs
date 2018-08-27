@@ -7,12 +7,12 @@ namespace TMSA.Eventos.Application.ViewModels
     {
         public EventoEnderecoViewModel()
         {
-            EnderecoId = Guid.NewGuid();
-            EventoId = Guid.NewGuid();
+            Id = Guid.NewGuid();
+            Endereco = new EnderecoViewModel();
         }
 
         [Key]
-        public Guid EventoId { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O Nome é requerido")]
         [MinLength(2, ErrorMessage = "O tamanho minimo do Nome é {1}")]
@@ -51,24 +51,6 @@ namespace TMSA.Eventos.Application.ViewModels
         public EnderecoViewModel Endereco { get; set; }
         public Guid OrganizadorId { get; set; }
 
-        // Endereço
-
-        [Key]
-        public Guid EnderecoId { get; set; }
-
-        public string Logradouro { get; set; }
-
-        public string Numero { get; set; }
-
-        public string Complemento { get; set; }
-
-        public string Bairro { get; set; }
-
-        public string CEP { get; set; }
-
-        public string Cidade { get; set; }
-
-        public string Estado { get; set; }
 
     }
 }

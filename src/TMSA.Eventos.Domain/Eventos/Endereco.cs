@@ -28,7 +28,6 @@ namespace TMSA.Eventos.Domain.Eventos
         //EF Construtor
         protected Endereco() { }
 
-        public Guid EnderecoId { get; private set; }
         public string Logradouro { get; private set; }
         public string Numero { get; private set; }
         public string Complemento { get; private set; }

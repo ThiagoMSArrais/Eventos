@@ -13,13 +13,14 @@ namespace TMSA.Eventos.Domain.Organizadores
 
         public Organizador(Guid id, string nome, string cpf, string email)
         {
-            Id = id;
+            OrganizadorID = id;
             Nome = nome;
             CPF = cpf;
             Email = email;
         }
 
         // EF Construtor
+        public Guid OrganizadorID { get; private set; }
         protected Organizador() { }
 
         // EF Propriedade de Navegação

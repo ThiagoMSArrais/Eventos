@@ -15,6 +15,7 @@ namespace TMSA.Eventos.Domain.Core.Models
 
         
         [NotMapped]
+        public Guid Id { get; protected set; }
         public ValidationResult ValidationResult { get; protected set; }
         public abstract bool EhValido();
         
