@@ -25,7 +25,7 @@ namespace TMSA.Eventos.Application
             var evento = _mapper.Map<EventoEnderecoViewModel, Evento>(eventoEnderecoViewModel);
             var endereco = _mapper.Map<EventoEnderecoViewModel, Endereco>(eventoEnderecoViewModel);
 
-            var eventoCompleto = Evento.EventoFactory.NovoEventoCompleto(evento.EventoId, evento.Nome, evento.DescricaoCurta, evento.DescricaoLonga,
+            var eventoCompleto = Evento.EventoFactory.NovoEventoCompleto(evento.Id, evento.Nome, evento.DescricaoCurta, evento.DescricaoLonga,
                                                                          evento.DataInicioDoEvento, evento.DataFimDoEvento, evento.Gratuito, evento.Valor,
                                                                          evento.Online, evento.NomeDaEmpresa, null, endereco);
             _eventoService.Adicionar(eventoCompleto);

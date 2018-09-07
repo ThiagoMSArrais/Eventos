@@ -23,7 +23,7 @@ namespace TMSA.Eventos.Domain.Services
 
         public void Atualizar(Evento obj)
         {
-            throw new NotImplementedException();
+            _eventoRepository.Atualizar(obj);
         }
 
         public void Dispose()
@@ -33,17 +33,17 @@ namespace TMSA.Eventos.Domain.Services
 
         public Evento ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return _eventoRepository.ObterPorId(id);
         }
 
         public IEnumerable<Evento> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _eventoRepository.ObterTodos();
         }
 
         public void Remover(Guid id)
         {
-            throw new NotImplementedException();
+            _eventoRepository.Remover(id);
         }
     }
 }
